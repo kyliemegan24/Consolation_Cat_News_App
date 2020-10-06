@@ -7,7 +7,6 @@ $(document).ready(function () {
     var searchCount = document.querySelector("#searchCount")
     var pastSearches = document.querySelector("#pastSearchesDisplay")
     
-    console.log(inputText);
     
 
 
@@ -19,39 +18,48 @@ $(document).ready(function () {
 
     // 
     $("#run-search").on("click", function (event) {
+        event.preventDefault();
 
         var inputText = userInput.value.trim();
+        console.log(inputText);
         // if input field blank - return
         if (inputText === "") {
             return;
         } else {
             localStorage.setItem("pastSearches", JSON.stringify(inputText))
         }
-        getResponse();
+        // getResponse();
         // add the search to our aray of searches)
-    };
+    
 
-    function getResponse() {
-    var nytQueryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + userInput + "&api-key=" + nytAPIKey;
+        // function getResponse() {
+        var nytQueryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + inputText + "&api-key=" + nytAPIKey;
 
-    $.ajax({
+        $.ajax({
         url: nytQueryURL,
         method: "GET"
-    })
-        .then(function (response) {
-            console.log(response)
+        })
+        .then(function (reply) {
+            console.log(reply)
+            console.log(reply.response.docs[3].headline.main)
+            console.log(reply.response.docs[3].lead_paragraph)
+            console.log(reply.response.docs[3].web_url)
+
+            $("#card-title").text(reply.response.docs[3].headline.main)
+            $("#lead-para").text(reply.response.docs[3].lead_paragraph)
+            $("#web-url").attr("href", + reply.response.docs[3].web_url)
         })
 
-    $.ajax({
+        $.ajax({
         url: catQueryURL,
         method: "GET"
-    })
+        })
         .then(function (response) {
             console.log(response)
             console.log(response[0].url)
 
             $("#catImg").attr("src", response[0].url)
         })
-    }
+    });
     getStoredInputs();
 });

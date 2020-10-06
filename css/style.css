@@ -1,3 +1,10 @@
 .input-field, .page-footer {
     background-color:#455a64 
 }
+
+.card-title {
+    font-weight: 600px;
+    /* text-shadow: 1px 2px 0px #000000; */
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+}
