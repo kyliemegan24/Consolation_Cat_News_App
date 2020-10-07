@@ -1,11 +1,16 @@
 .input-field, .page-footer {
-    background-color:#455a64 
+    background-color:#455a64;
+    color: white;
 }
 
+#times {
+    font-family: 'UnifrakturCook', cursive;
+    font-size: 32px;
+}
 .card-title {
     font-weight: 600px;
     /* text-shadow: 1px 2px 0px #000000; */
-    background-color: transparent;
+    background-color: rgb(0, 0, 0, .3);
     color: rgb(255, 255, 255);
 }
 
@@ -18,12 +23,14 @@ h4 {
     margin: 0px;
     padding: 10px;
     color: white;
+    font-size: 30px;
+    /* font-family: 'Poller One', cursive; */
+    font-family: 'Eczar', serif;
 }
 
+
 .fade {
-    background:linear-gradient(180deg, #26A69A 10%, #455a64);
-
-
+    background:linear-gradient(180deg, #26A69A 5%, #455a64);
 }
 
 .btn-group {
