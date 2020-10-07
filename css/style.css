@@ -8,3 +8,38 @@
     background-color: transparent;
     color: rgb(255, 255, 255);
 }
+
+.collection-header {
+    text-align: center;
+}
+
+
+h4 {
+    margin: 0px;
+    padding: 10px;
+    color: white;
+}
+
+.fade {
+    background:linear-gradient(180deg, #26A69A 10%, #455a64);
+
+
+}
+
+.btn-group {
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+    display: flex;
+    
+
+
+}
+
+.btn {
+    width: 30%;
+    font-size: 8px;
+    margin: 3px;
+}

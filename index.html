@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./css/style.css" />
   <title>Consolation Cat for the Times</title>
@@ -21,25 +22,42 @@
             </ul>
             </div>
         </nav> -->
+        <div class="collection-header">
+          <h4 class="fade">Consolation Cat for the Times</h4>
+        </div>
   <div class="row">
     <nav>
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo">Consolation Cat</a>
         <form>
           <div class="input-field">
-            <input id="search" type="search" required>
-            <div>
+            <input id="search" type="search" required placeholder="search">
+          </div>
+        </form>
     </nav>
   </div>
-  <div class="row">
-    <button class="btn waves-effect waves-light" type="submit" name="action" id="run-search">Submit
-      <i class="material-icons right">send</i></button>
-    <button class="btn waves-effect waves-light" type="submit" name="action" id="clear-all">Submit
-      <i class="material-icons right">Clear Results</i>
-    </button>
-    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-    <i class="material-icons">close</i>
-    </form>
+  <div class="btn-group">
+    
+      <button class="btn waves-effect waves-light btn-small" type="submit" name="action" id="run-search">
+        <i class="material-icons right">search</i>
+        Find Articles
+      </button>
+    
+    
+      <button class="btn waves-effect waves-light btn-small" type="submit" name="action" id="clear-all">
+        <i class="material-icons right">clear</i>
+        Clear Articles
+      </button>
+   
+   
+      <button class="btn waves-effect waves-light btn-small" type="submit" name="action" id="cats-only">
+        <i class="material-icons right">pets</i>
+        Just cats, please!
+      </button>
+   
+    <!-- <label class="label-icon" for="search"><i class="material-icons"></i></label>
+    <i class="material-icons"></i> -->
+    
   </div>
 
   </div>
