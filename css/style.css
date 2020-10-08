@@ -1,5 +1,5 @@
 .input-field, .page-footer {
-    background-color:#455a64;
+    background-color:#0d47a1;
     color: white;
 }
 
@@ -30,8 +30,9 @@ h4 {
 
 
 .fade {
-    background:linear-gradient(180deg, #26A69A 5%, #455a64);
+    background:linear-gradient(180deg, #1a237e 5%,#0d47a1);
 }
+
 
 .btn-group {
     width: 100%;
@@ -47,7 +48,7 @@ h4 {
 
 .btn {
     width: 30%;
-    font-size: 8px;
+    font-size: 10px;
     margin: 3px;
 }
 
