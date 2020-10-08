@@ -5,24 +5,50 @@ $(document).ready(function () {
     var catQueryURL = "https://api.thecatapi.com/v1/images/search?api_key=" + catAPIKey;
     var userInput = document.querySelector("#search")
     var searchCount = document.querySelector("#searchCount")
-    var pastSearches = document.querySelector("#pastSearchesDisplay")
+    var pastSearchesEl = $("#pastSearchesDisplay");
     var savedArticles = []
     var savedCatPhotos = []
+    var pastSearches = JSON.parse(localStorage.getItem("pastSearches")) || [];
 
     function getStoredInputs() {
-        var pastArticleSearches = JSON.parse(localStorage.getItem("savedArticles"))
-        var pastSearchesComplete = pastArticleSearches + JSON.parse(localStorage.getItem("savedCatPhotos"))
-        $("#pastSearchesDisplay").text(pastSearchesComplete)
+        /* var pastArticleSearches = JSON.parse(localStorage.getItem("savedArticles"))
+         var pastSearchesComplete = pastArticleSearches + JSON.parse(localStorage.getItem("savedCatPhotos"))
+         $("#pastSearchesDisplay").text(pastSearchesComplete)*/
+        pastSearchesEl.empty();
+        for (var i = 0; i < pastSearches.length; i++) {
+            pastSearchesEl.append($("<li class='pastSearch'>").text(pastSearches[i]));
+        }
+
     }
+
+    function clearCat(){
+        $("#cat-only").attr("src","");
+    }
+
+    $(document).on("click", ".pastSearch", function () {
+        getArticles($(this).text());
+    })
 
 
     $("#run-search").on("click", function (event) {
+       
         event.preventDefault();
 
         var inputText = userInput.value.trim();
+
+        pastSearches.push(inputText);
+        localStorage.setItem("pastSearches", JSON.stringify(pastSearches));
+        getStoredInputs();
+
         console.log(inputText);
 
+        getArticles(inputText);
 
+    })
+
+    function getArticles(inputText){
+        $(".card-container").css("display","block");
+        clearCat();
         var nytQueryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + inputText + "&api-key=" + nytAPIKey;
 
         $.ajax({
@@ -46,7 +72,7 @@ $(document).ready(function () {
                     savedArticles.push({ responseArticle });
                     callCats();
                 }
-                localStorage.setItem("responseArticle", JSON.stringify(responseArticle))
+                //localStorage.setItem("responseArticle", JSON.stringify(responseArticle))
             });
 
         function callCats() {
@@ -66,14 +92,14 @@ $(document).ready(function () {
                         counter2++
                         savedCatPhotos.push({ responseCatPhoto });
 
-                        localStorage.setItem("responseCatPhoto", JSON.stringify(responseCatPhoto))
+                        //localStorage.setItem("responseCatPhoto", JSON.stringify(responseCatPhoto))
                     })
             }
         }
 
-    });
+    };
 
-    $("#cats-only").on("click", function() {
+    $("#cats-only").on("click", function () {
         $.ajax({
             url: catQueryURL,
             method: "GET"
@@ -82,10 +108,17 @@ $(document).ready(function () {
                 console.log(response)
                 // console.log(response[0].url)
 
-                $("#cat-only").attr("src", response[0].url).attr("style", "width: 400px")
+                $("#cat-only").attr("src", response[0].url)
+                //.attr("style", "width: 400px")
             })
-            
-                
+
+
     });
+
+    $("#clear-all").on("click", function(){
+        $(".card-container").css("display","none");
+        clearCat();
+    })
     getStoredInputs();
+
 });
