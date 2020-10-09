@@ -17,7 +17,7 @@ This creates a less stressfu news reading environment.
 [Repository](https://github.com/kyliemegan24/Consolation_Cat_News_App)
 
 # Example
-[Demo]
+![demoExample](https://user-images.githubusercontent.com/66698741/95547168-f5170300-09c7-11eb-9ffc-1267d718be95.JPG)
 
 
 # Project Team
